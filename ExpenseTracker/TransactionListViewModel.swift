@@ -19,7 +19,7 @@ final class TransactionListViewModel: ObservableObject {
     
     func getTransactions() {
         guard let url = URL(string: "https://designcode.io/data/transactions.json") else {
-            print("Unvalid URL")
+            print("Invalid URL")
             return
         }
         
@@ -29,10 +29,13 @@ final class TransactionListViewModel: ObservableObject {
                     dump(response)
                     throw URLError(.badServerResponse)
                 }
-                
                 return data
             }
-            .decode(type: [Transaction].self, decoder: JSONDecoder())
+            .decode(type: [Transaction].self, decoder: {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase // JSON anahtarlarını camelCase'e dönüştür
+                return decoder
+            }())
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -43,8 +46,8 @@ final class TransactionListViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] result in
                 self?.transactions = result
+                dump(self?.transactions)
             }
             .store(in: &cancellables)
-
     }
 }
