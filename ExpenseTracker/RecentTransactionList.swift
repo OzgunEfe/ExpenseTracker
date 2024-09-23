@@ -31,6 +31,13 @@ struct RecentTransactionList: View {
                 }
             }
             .padding(.top)
+            
+            ForEach(Array(transactionListVM.transactions.prefix(5).enumerated()), id: \.element) { index, transaction in
+                TransactionRow(transaction: transaction)
+                
+                Divider()
+                    .opacity(index == 4 ? 0 : 1)
+            }
         }
         .padding()
         .background(Color.systemBackground)
@@ -39,6 +46,19 @@ struct RecentTransactionList: View {
     }
 }
 
-#Preview {
-    RecentTransactionList()
+struct RecentTransactionList_Preview: PreviewProvider {
+    static let transactionListVM: TransactionListViewModel = {
+        let transactionListVM = TransactionListViewModel()
+        transactionListVM.transactions = transactionListPreviewData
+        return transactionListVM
+    }()
+    
+    static var previews: some View {
+        Group {
+            RecentTransactionList()
+            RecentTransactionList()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(transactionListVM)
+    }
 }
