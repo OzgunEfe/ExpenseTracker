@@ -32,10 +32,8 @@ struct Transaction: Identifiable, Decodable, Hashable {
     }
     
     var dateParsed: Date {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.date(from: date) ?? Date()
-    }
+            return date.dateParsed()
+        }
     
     var signedAmount: Double {
         return type == .credit ? amount : -amount
