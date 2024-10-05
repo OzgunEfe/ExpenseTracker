@@ -15,11 +15,13 @@ struct TransactionList: View {
             List {
                 ForEach(Array(transactionListVM.groupTransactionsByMonth()), id: \.key) { month, transactions in
                     Section {
-                        ForEach(transactions) {transaction in
+                        ForEach(transactions) { transaction in
                             TransactionRow(transaction: transaction)
                         }
                     } header: {
-                        Text(month)
+                        // Başlık olarak ay ve yılı göster
+                        Text(month) // Örneğin: "October 2024"
+                            .font(.headline)
                     }
                     .listSectionSeparator(.hidden)
                 }
@@ -29,6 +31,7 @@ struct TransactionList: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+
 
 struct TransactionList_Previews: PreviewProvider {
     static let transactionListVM: TransactionListViewModel = {

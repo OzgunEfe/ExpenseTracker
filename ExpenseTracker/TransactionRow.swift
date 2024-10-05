@@ -32,7 +32,7 @@ struct TransactionRow: View {
                     .opacity(0.7)
                     .lineLimit(1)
                 
-                Text(transaction.dateParsed, format: .dateTime.year().month().day())
+                Text(transaction.dateParsed, format: Date.FormatStyle().day().month(.twoDigits).year())
                     .font(.footnote)
                     .foregroundColor(.secondary)
             }

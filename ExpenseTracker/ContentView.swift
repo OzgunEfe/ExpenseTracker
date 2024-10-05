@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUICharts
 
 struct ContentView: View {
-    var demoData: [Double] = [8, 3, 4, 6, 12, 9, 2]
+    @EnvironmentObject var TransactionListVM: TransactionListViewModel
     
     var body: some View {
         NavigationView {
@@ -20,17 +20,22 @@ struct ContentView: View {
                         .bold()
                     
                     // Chart
-                    CardView {
-                        VStack {
-                            ChartLabel("£900", type: .title)
-                            LineChart()
+                    let data = TransactionListVM.accumulateTransactions()
+                    
+                    if !data.isEmpty {
+                        let totalExpenses = data.last?.1 ?? 0
+                        CardView {
+                            VStack {
+                                ChartLabel(totalExpenses.formatted(.currency(code: "GBP")), type: .title)
+                                LineChart()
+                            }
+                            .background(Color.systemBackground)
+                            
                         }
-                        .background(Color.systemBackground)
-                        
+                        .data(data)
+                        .chartStyle(ChartStyle(backgroundColor: Color.systemBackground, foregroundColor: ColorGradient(Color.icon.opacity(0.4), Color.icon)))
+                        .frame(height: 300)
                     }
-                    .data(demoData)
-                    .chartStyle(ChartStyle(backgroundColor: Color.systemBackground, foregroundColor: ColorGradient(Color.icon.opacity(0.4), Color.icon)))
-                    .frame(height: 300)
                     
                     // TransactionList
                     RecentTransactionList()

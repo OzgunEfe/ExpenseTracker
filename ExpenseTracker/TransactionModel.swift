@@ -32,7 +32,15 @@ struct Transaction: Identifiable, Decodable, Hashable {
     }
     
     var dateParsed: Date {
-            return date.dateParsed()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy" // JSON formatına uygun hale getirildi
+        return formatter.date(from: date) ?? Date() // Geçerli bir tarih olmazsa bugünün tarihi gelir
+    }
+
+    var formattedDate: String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy" // İstenen "dd-MM-yyyy" formatı
+            return formatter.string(from: dateParsed)
         }
     
     var signedAmount: Double {

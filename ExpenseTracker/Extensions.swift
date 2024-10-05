@@ -19,8 +19,7 @@ extension DateFormatter {
     static let allNumericUK: DateFormatter = {
         print("Initializing DateFormatter")
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
 }
@@ -32,3 +31,15 @@ extension String {
     }
 }
 
+
+extension Date: Strideable {
+    func formatted() -> String {
+        return self.formatted(.dateTime.year().month().day())
+    }
+}
+
+extension Double {
+    func roundedTo2Digits() -> Double {
+        return (self * 100).rounded() / 100
+    }
+}
