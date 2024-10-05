@@ -20,7 +20,7 @@ struct TransactionList: View {
                         }
                     } header: {
                         // Başlık olarak ay ve yılı göster
-                        Text(month) // Örneğin: "October 2024"
+                        Text(month)
                             .font(.headline)
                     }
                     .listSectionSeparator(.hidden)

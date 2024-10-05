@@ -39,7 +39,7 @@ struct Transaction: Identifiable, Decodable, Hashable {
 
     var formattedDate: String {
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy" // İstenen "dd-MM-yyyy" formatı
+            formatter.dateFormat = "dd/MM/yyyy"
             return formatter.string(from: dateParsed)
         }
     
