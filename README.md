@@ -9,7 +9,7 @@
 - **Transaction List**: View all your transactions, neatly categorized by date. Each month is separated with a title, making it easy to review your financial activity.
 - **Dark and Light Modes**: Experience a seamless switch between light and dark modes for comfortable viewing, no matter the time of day.
 
-# Screenshoot
+## Screenshoot
 <img src="ScreenShots.png" alt="App Screenshot" width="450"/>
   
 ## Dependencies
@@ -17,7 +17,7 @@
 This project makes use of the following dependencies:
 
 - [**Swift Collections**](https://github.com/apple/swift-collections) – used for efficient data structures like `OrderedDictionary`.
-- [**SwiftUICharts**](https://github.com/willdale/SwiftUICharts) – used to display clean and informative charts.
+- [**SwiftUICharts**](https://github.com/AppPear/ChartView) – used to display clean and informative charts.
 - [**SwiftUIFontIcon**](https://github.com/huybuidac/SwiftUIFontIcon) – used for displaying custom icons in the transaction rows.
 
 ## Acknowledgements
