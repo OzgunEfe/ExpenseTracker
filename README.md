@@ -8,6 +8,9 @@
 - **Visual Chart**: See your income and spending transactions clearly with a line chart, giving you an easy way to track your financial history at a glance.
 - **Transaction List**: View all your transactions, neatly categorized by date. Each month is separated with a title, making it easy to review your financial activity.
 - **Dark and Light Modes**: Experience a seamless switch between light and dark modes for comfortable viewing, no matter the time of day.
+
+# Screenshoot
+<img src="ScreenShots.png" alt="App Screenshot" width="450"/>
   
 ## Dependencies
 
